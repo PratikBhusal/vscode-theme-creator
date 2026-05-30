@@ -94,7 +94,9 @@ def restore(
 def collate(
     output_file: Annotated[
         Path,
-        typer.Option("--output-file", "-o", help="Path to write the collated JSON file."),
+        typer.Option(
+            "--output-file", "-o", help="Path to write the collated JSON file."
+        ),
     ] = Path("collated.json"),
 ) -> None:
     """Collate all color map files in colors/ into a single key-to-colorschemes index."""
