@@ -1,0 +1,365 @@
+{
+	"name": "vsc-vira-theme",
+	"displayName": "Vira Theme",
+	"private": true,
+	"description": "The original Material Theme is now Vira Theme",
+	"version": "2026.5.3",
+	"publisher": "vira",
+	"author": "Vira",
+	"icon": "logo.png",
+	"pricing": "Trial",
+	"galleryBanner": {
+		"color": "#000000",
+		"theme": "dark"
+	},
+	"files": [
+		"build",
+		"LICENSE",
+		"README.md",
+		"logo.png"
+	],
+	"license": "SEE LICENSE IN LICENSE",
+	"repository": "https://github.com/vira-themes/vira-theme-support",
+	"engines": {
+		"node": "24.x",
+		"vscode": ">=1.102.0",
+		"pnpm": ">=9.0.0"
+	},
+	"categories": [
+		"Themes",
+		"Other"
+	],
+	"keywords": [
+		"Material Theme",
+		"Material",
+		"Themes",
+		"Color Theme",
+		"Icon Theme",
+		"Vira",
+		"dark theme",
+		"dark",
+		"icons",
+		"dark mode",
+		"Vira Theme",
+		"Vira Icons"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"extensionKind": [
+		"ui",
+		"workspace"
+	],
+	"main": "./build/index.js",
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Vira Theme",
+			"properties": {
+				"viraTheme.accent": {
+					"order": 1,
+					"type": "string",
+					"default": "Teal",
+					"enum": [
+						"Vira",
+						"White",
+						"Tomato",
+						"Orange",
+						"Yellow",
+						"Acid Lime",
+						"Lime",
+						"Teal",
+						"Bright Teal",
+						"Cyan",
+						"Blue",
+						"Indigo",
+						"Purple",
+						"Pink"
+					],
+					"description": "Set the accent color used across the interface and icons.",
+					"scope": "window"
+				},
+				"viraTheme.customAccent": {
+					"order": 2,
+					"type": "string",
+					"markdownDescription": "The custom accent **will override** the `#viraTheme.accent#` color. Run clear accent command or manually remove the value.",
+					"scope": "window",
+					"pattern": "^$|^#([A-Fa-f0-9]{6})$",
+					"patternErrorMessage": "Invalid color format. Enter a valid 6 digits hex color."
+				},
+				"viraTheme.useOutlinedIcons": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Use outlined folder icons.",
+					"scope": "window"
+				},
+				"viraTheme.useTopTabIndicator": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Put the current tab indicator at the top instead of the bottom.",
+					"scope": "window"
+				},
+				"viraTheme.syncThemesAndIcons": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Synchronize file icons themes with UI themes when switching themes.",
+					"scope": "window"
+				},
+				"viraTheme.showBorders": {
+					"type": "boolean",
+					"default": false,
+					"scope": "window",
+					"markdownDescription": "Show borders in some area of the editor"
+				},
+				"viraTheme.contrastedTabs": {
+					"type": "boolean",
+					"default": false,
+					"scope": "window",
+					"markdownDescription": "Add more contrast to tabs by using a different background for the tabs bar"
+				},
+				"viraTheme.solidLineHighlight": {
+					"type": "boolean",
+					"default": false,
+					"scope": "window",
+					"markdownDescription": "Render a solid background highlight for the active line instead of a border"
+				},
+				"viraTheme.hidesExplorerArrows": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Hide arrow icons in the file explorer.",
+					"scope": "window"
+				},
+				"viraTheme.hidesShadows": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Hide shadows across the interface for a completely flat look.",
+					"scope": "window"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "viraTheme.licenseInputBox",
+				"title": "🎉 Activate Vira Theme",
+				"enablement": "viraTheme.isTrial",
+				"category": "Vira Theme",
+				"shortTitle": "Unlock Vira Theme"
+			},
+			{
+				"command": "viraTheme.licenseDeactivate",
+				"title": "Deactivate Vira Theme",
+				"enablement": "!viraTheme.isTrial",
+				"category": "Vira Theme",
+				"shortTitle": "Deactivate Vira Theme"
+			},
+			{
+				"command": "viraTheme.openSettings",
+				"title": "Open Settings",
+				"category": "Vira Theme",
+				"shortTitle": "Customize Vira Theme"
+			}
+		],
+		"menus": {
+			"editor/title": [
+				{
+					"command": "viraTheme.licenseInputBox",
+					"group": "navigation",
+					"when": "viraTheme.isTrial"
+				}
+			]
+		},
+		"themes": [
+			{
+				"label": "Vira Teal",
+				"path": "./build/themes/Vira-Theme-Teal.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Teal High Contrast",
+				"path": "./build/themes/Vira-Theme-Teal-High-Contrast.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Graphene",
+				"path": "./build/themes/Vira-Theme-Graphene.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Graphene High Contrast",
+				"path": "./build/themes/Vira-Theme-Graphene-High-Contrast.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Palenight",
+				"path": "./build/themes/Vira-Theme-Palenight.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Palenight High Contrast",
+				"path": "./build/themes/Vira-Theme-Palenight-High-Contrast.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Ocean",
+				"path": "./build/themes/Vira-Theme-Ocean.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Ocean High Contrast",
+				"path": "./build/themes/Vira-Theme-Ocean-High-Contrast.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Deepforest",
+				"path": "./build/themes/Vira-Theme-Deepforest.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Deepforest High Contrast",
+				"path": "./build/themes/Vira-Theme-Deepforest-High-Contrast.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Carbon",
+				"path": "./build/themes/Vira-Theme-Carbon.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Carbon High Contrast",
+				"path": "./build/themes/Vira-Theme-Carbon-High-Contrast.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Anthracite",
+				"path": "./build/themes/Vira-Theme-Anthracite.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Anthracite High Contrast",
+				"path": "./build/themes/Vira-Theme-Anthracite-High-Contrast.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Montana",
+				"path": "./build/themes/Vira-Theme-Montana.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Montana High Contrast",
+				"path": "./build/themes/Vira-Theme-Montana-High-Contrast.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Sand",
+				"path": "./build/themes/Vira-Theme-Sand.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Sand High Contrast",
+				"path": "./build/themes/Vira-Theme-Sand-High-Contrast.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Clay",
+				"path": "./build/themes/Vira-Theme-Clay.json",
+				"uiTheme": "vs-dark"
+			},
+			{
+				"label": "Vira Clay High Contrast",
+				"path": "./build/themes/Vira-Theme-Clay-High-Contrast.json",
+				"uiTheme": "vs-dark"
+			}
+		],
+		"iconThemes": [
+			{
+				"id": "vira-icons-teal",
+				"label": "Vira Icons Teal",
+				"path": "./build/themes/Vira-Icons-Teal.json",
+				"_watch": true
+			},
+			{
+				"id": "vira-icons-graphene",
+				"label": "Vira Icons Graphene",
+				"path": "./build/themes/Vira-Icons-Graphene.json",
+				"_watch": true
+			},
+			{
+				"id": "vira-icons-palenight",
+				"label": "Vira Icons Palenight",
+				"path": "./build/themes/Vira-Icons-Palenight.json",
+				"_watch": true
+			},
+			{
+				"id": "vira-icons-ocean",
+				"label": "Vira Icons Ocean",
+				"path": "./build/themes/Vira-Icons-Ocean.json",
+				"_watch": true
+			},
+			{
+				"id": "vira-icons-deepforest",
+				"label": "Vira Icons Deepforest",
+				"path": "./build/themes/Vira-Icons-Deepforest.json",
+				"_watch": true
+			},
+			{
+				"id": "vira-icons-carbon",
+				"label": "Vira Icons Carbon",
+				"path": "./build/themes/Vira-Icons-Carbon.json",
+				"_watch": true
+			},
+			{
+				"id": "vira-icons-anthracite",
+				"label": "Vira Icons Anthracite",
+				"path": "./build/themes/Vira-Icons-Anthracite.json",
+				"_watch": true
+			},
+			{
+				"id": "vira-icons-montana",
+				"label": "Vira Icons Montana",
+				"path": "./build/themes/Vira-Icons-Montana.json",
+				"_watch": true
+			},
+			{
+				"id": "vira-icons-sand",
+				"label": "Vira Icons Sand",
+				"path": "./build/themes/Vira-Icons-Sand.json",
+				"_watch": true
+			},
+			{
+				"id": "vira-icons-clay",
+				"label": "Vira Icons Clay",
+				"path": "./build/themes/Vira-Icons-Clay.json",
+				"_watch": true
+			}
+		],
+		"productIconThemes": [
+			{
+				"id": "viraUIIcons",
+				"label": "Vira UI Icons",
+				"path": "./build/themes/Vira-Product-Icons.json"
+			}
+		],
+		"icons": {
+			"vira-logo": {
+				"description": "Vira icon",
+				"default": {
+					"fontPath": "./build/assets/vira-ui-icons.woff2",
+					"fontCharacter": "\\f106"
+				}
+			}
+		}
+	},
+	"dependencies": {
+		"jsonwebtoken": "9.0.3"
+	},
+	"__metadata": {
+		"installedTimestamp": 1780104426253,
+		"targetPlatform": "universal",
+		"size": 5434255
+	}
+}
